@@ -1,0 +1,43 @@
+-- CRIAR TABELA E CARREGAR BANCO 
+
+CREATE TABLE contabil (
+    data DATE,
+    registro_ans varchar (20),
+    cd_conta_contabil VARCHAR(20),
+    descricao VARCHAR(255),
+    vl_saldo_inicial double,
+    vl_saldo_final double
+    
+);
+-- CARGA DO BANCO COM ARQUIVOS CSV CONTABIL 
+
+LOAD DATA LOCAL INFILE 'C:/banco_de_dados/2024/1T2024.csv'
+INTO TABLE contabil
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+LOAD DATA LOCAL INFILE '/home/kps/Documentos/Teste3/2024/2T2024.csv'
+INTO TABLE contabil
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE '/home/kps/Documentos/Teste3/2024/3T2024.csv'
+INTO TABLE contabil
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+LOAD DATA LOCAL INFILE '/home/kps/Documentos/Teste3/2024/4T2024.csv'
+INTO TABLE contabil
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
