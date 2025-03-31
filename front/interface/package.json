@@ -1,0 +1,21 @@
+{
+  "name": "frontvue",
+  "version": "1.0.0",
+  "description": "Frontend em vue para buscar dados das operadoras",
+  "main": "src/main.js",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "vue": "^3.0.0",
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "^4.5.0",
+    "@vue/compiler-sfc": "^3.0.0"
+  },
+  "author": "",
+  "license": "MIT"
+}

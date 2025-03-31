@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <title>Busca de Operadoras</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+      #search-container {
+        margin-bottom: 20px;
+      }
+      .operadora-item {
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Busca de Operadoras</h1>
+      <div id="search-container">
+        <input type="text" id="searchInput" placeholder="Digite o nome da operadora">
+        <button onclick="buscarOperadoras()">Pesquisar</button>
+      </div>
+      <div id="results"></div>
+    </div>
+
+    <script>
+      async function buscarOperadoras() {
+        var resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = 'Carregando...';
+        
+        try {
+          // Utilizando método GET; se sua API aceitar parâmetros via query string, adicione-os conforme necessário
+          var resultado = await fetch('http://127.0.0.1:8000/lista_cadastros_operadoras', {
+            method: 'GET',
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+  
+          if (!resultado.ok) {
+            throw new Error('Erro na requisição');
+          }
+  
+          var dados = await resultado.json();
+          mostrarResultados(dados);
+        } catch (erro) {
+          console.error('Erro:', erro);
+          resultsDiv.innerHTML = 'Erro ao buscar operadoras.';
+        }
+      }
+  
+      function mostrarResultados(dados) {
+        var resultsDiv = document.getElementById('results');
+        var searchInput = document.getElementById('searchInput').value.toLowerCase();
+        
+        resultsDiv.innerHTML = '';
+  
+        if (dados.operadoras && dados.operadoras.length > 0) {
+          // Filtra os resultados conforme o texto digitado
+          var operadorasFiltradas = dados.operadoras.filter(function(op) {
+            return (op.razao_social && op.razao_social.toLowerCase().includes(searchInput)) ||
+                   (op.nome_fantasia && op.nome_fantasia.toLowerCase().includes(searchInput));
+          });
+  
+          if (operadorasFiltradas.length > 0) {
+            operadorasFiltradas.forEach(function(op) {
+              var div = document.createElement('div');
+              div.className = 'operadora-item';
+              var html = 
+                '<p><strong>Razão Social:</strong> ' + (op.razao_social || 'N/A') + '</p>' +
+                '<p><strong>Nome Fantasia:</strong> ' + (op.nome_fantasia || 'N/A') + '</p>' +
+                '<p><strong>Registro ANS:</strong> ' + (op.registro_ans || 'N/A') + '</p>' +
+                '<p><strong>CNPJ:</strong> ' + (op.cnpj || 'N/A') + '</p>';
+              div.innerHTML = html;
+              resultsDiv.appendChild(div);
+            });
+          } else {
+            resultsDiv.innerHTML = 'Nenhuma operadora encontrada com este nome.';
+          }
+        } else {
+          resultsDiv.innerHTML = 'Nenhum resultado encontrado.';
+        }
+      }
+    </script>
+  </body>
+</html>

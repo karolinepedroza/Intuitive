@@ -1,0 +1,39 @@
+{
+    "info": {
+        "_postman_id": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
+        "name": "API Busca de Operadoras",
+        "description": "Coleção para demonstrar a busca de operadoras via API.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Buscar Operadoras",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/lista_cadastros_operadoras",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "lista_cadastros_operadoras"
+                    ]
+                },
+                "description": "Requisição GET para buscar os cadastros das operadoras."
+            },
+            "response": []
+        }
+    ]
+}
