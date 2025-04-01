@@ -1,44 +1,44 @@
-Aplicativo de Busca em Vue
+# Aplicativo de Busca em Vue
 
-Este é um projeto simples feito com Vue.js que permite buscar operadoras digitando um nome em um campo de pesquisa. Ele se conecta a uma API para buscar os dados e mostrar os resultados na tela.
+Este é um projeto simples feito com vue.js que permite buscar operadoras digitando um nome em um campo de pesquisa. Ele se conecta a uma API para buscar os dados e mostrar os resultados na tela.
 
-Estrutura do Projeto
+## Índice
 
-vue-search-app  
-├── src  
-│   ├── App.vue                # Componente principal  
-│   ├── components  
-│   │   └── SearchField.vue    # Campo de busca  
-│   ├── services  
-│   │   └── api.js             # Arquivo para conectar com a API  
-│   └── main.js                # Arquivo de entrada do Vue  
-├── package.json               # Configuração do projeto  
-└── README.md                  # Documentação  
+- [Como Usar](#como-usar)
+- [Funcionalidade](#funcionalidade)
+- [Importante](#importante)
 
-Como Usar
 
-    Baixar o projeto:
+## Como Usar
 
+### Baixar o projeto:
+```sh
 git clone <repository-url>
-cd interface
+cd Interface
+```
 
-Instalar as dependências:
-
+### Instalar as dependências:
+```sh
 npm install
+```
 
-Rodar o projeto:
+### Rodar o projeto:
+```sh
+npm run serve
+```
 
-    npm run serve
+### Abrir no navegador:
+Acesse [http://localhost:8080](http://localhost:8080).
 
-    Abrir no navegador:
-    Vá para http://localhost:8080.
+## Funcionalidade
 
-Funcionalidade
+- Digite o nome de uma **operadora** no campo de busca.
+- A aplicação enviará a busca para a **API** e mostrará os resultados.
 
-    Digite o nome de uma operadora no campo de busca.
+## Importante
 
-    A aplicação enviará a busca para a API e mostrará os resultados.
+- A busca funciona com uma **requisição POST** para a API.
+- Certifique-se de que a **API esteja rodando** antes de utilizar o aplicativo.
 
-Importante
 
-A busca funciona com uma requisição POST para a API. Certifique-se de que a API esteja rodando.
+
